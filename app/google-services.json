@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "235603197569",
+    "firebase_url": "https://moviereel-e7a33.firebaseio.com",
+    "project_id": "moviereel-e7a33",
+    "storage_bucket": "moviereel-e7a33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235603197569:android:eaa65e97b9a24487bbd780",
+        "android_client_info": {
+          "package_name": "com.example.moviereel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235603197569-kopph2mgc6d349pir512epd2o5rufu0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moviereel",
+            "certificate_hash": "3fe141c4d04fcde5958df10fec6bdffaac7f6f0d"
+          }
+        },
+        {
+          "client_id": "235603197569-iav6pvau0q5v38flgpammni7t9eh9kt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgsAXZjXfCLMi902T8M3J6smxcYEs7r28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235603197569-iav6pvau0q5v38flgpammni7t9eh9kt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
