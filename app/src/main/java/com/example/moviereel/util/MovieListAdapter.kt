@@ -25,6 +25,7 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
+import com.master.exoplayer.MasterExoPlayerHelper
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 typealias couldNotPlayVideo = (String) -> Unit
@@ -96,53 +97,8 @@ class MovieListAdapter(): RecyclerView.Adapter<MovieItem>() {
 
         fun playVideo(link: String, couldNotPlayVideo: couldNotPlayVideo){
             playVideoUIState(true)
-            MovieListAdapter.positionOfItemPlayingVideo = position
             try {
-                //We use exoplayer so that our videos load faster.
-                val bandwidthMeter = DefaultBandwidthMeter()
-                val trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
-                val exoPlayer = ExoPlayerFactory.newSimpleInstance(context!!, trackSelector)
-
-                val uri = Uri.parse(link)
-                //val uri = Uri.parse("android.resource://${context!!.packageName}/${R.raw.james}")
-                //val uri = Uri.parse("assets://abba.3gp")
-
-                val dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-                //val dataSourceFactory = DefaultDataSourceFactory(context, "exoplayer_video")
-                val extractorsFactory = DefaultExtractorsFactory()
-                val mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null)
-
-                holder.exoPlayerView.setPlayer(exoPlayer)
-                exoPlayer.prepare(mediaSource)
-
-                exoPlayer.addListener(object : Player.EventListener {
-                    fun onTimelineChanged(timeline: Timeline, manifest: Any) {}
-
-                    override fun onLoadingChanged(isLoading: Boolean) {}
-
-                    override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-
-                        if (playbackState == ExoPlayer.STATE_BUFFERING) {
-                            holder.progressBar.visibility = View.VISIBLE
-                        } else {
-                            holder.ivThumbNailVideoImage.visibility = View.INVISIBLE
-                            holder.progressBar.visibility = View.INVISIBLE
-                        }
-
-                        if (playbackState == ExoPlayer.STATE_ENDED) {
-                            exoPlayer.seekTo(0) //if the video has finished playing, restart it.
-                        }
-                    }
-
-                    override fun onPlayerError(error: ExoPlaybackException) {
-                        couldNotPlayVideo.invoke(if(error.message != null) error.message!! else "Something went wrong")
-                    }
-
-                    fun onPositionDiscontinuity() {}
-                })
-
-                exoPlayer.setPlayWhenReady(true)
-
+                holder.exoPlayerView.url = link
             } catch (e: Exception) {
                 couldNotPlayVideo.invoke(if(e.message != null) e.message!! else "Something went wrong")
             }

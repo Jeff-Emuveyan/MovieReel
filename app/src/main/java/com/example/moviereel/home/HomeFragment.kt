@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviereel.R
 import com.example.moviereel.pojo.Movie
 import com.example.moviereel.util.MovieListAdapter
+import com.master.exoplayer.MasterExoPlayerHelper
 import kotlinx.android.synthetic.main.content_scrolling.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -55,6 +57,11 @@ class HomeFragment : Fragment() {
             recyclerView?.layoutManager = LinearLayoutManager(it)
             adapter = MovieListAdapter(it, recyclerView, listOfMovies)
             recyclerView.adapter = adapter
+
+            val masterExoPlayerHelper = MasterExoPlayerHelper(context!!, id = R.id.exoPlayerView)
+            masterExoPlayerHelper.makeLifeCycleAware((activity as AppCompatActivity))
+            masterExoPlayerHelper.attachToRecyclerView(recyclerView)
+            masterExoPlayerHelper.makeLifeCycleAware((activity as AppCompatActivity))
         }
 
 

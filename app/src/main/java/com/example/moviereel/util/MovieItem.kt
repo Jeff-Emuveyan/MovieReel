@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviereel.R
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView
+import com.master.exoplayer.MasterExoPlayer
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MovieItem(v: View): RecyclerView.ViewHolder(v) {
@@ -20,7 +21,7 @@ class MovieItem(v: View): RecyclerView.ViewHolder(v) {
     lateinit var progressBar: ProgressBar
     lateinit var ivPlayIcon: ImageView
     lateinit var ivThumbNailVideoImage: ImageView
-    lateinit var exoPlayerView: SimpleExoPlayerView
+        lateinit var exoPlayerView: MasterExoPlayer
     lateinit var tvTitle: TextView
     lateinit var tvDescription: TextView
 

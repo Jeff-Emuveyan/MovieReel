@@ -86,7 +86,7 @@
                 app:srcCompat="@drawable/horns" />
 
 
-            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            <com.master.exoplayer.MasterExoPlayer
                 android:visibility="invisible"
                 android:id="@+id/exoPlayerView"
                 android:layout_width="match_parent"
